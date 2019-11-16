@@ -1,0 +1,20 @@
+{
+  "name": "marriage-certification-dapp",
+  "version": "1.0.0",
+  "description": "Issue  mariage certification as NFT on Ethereum",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tak1827/marriage-certification-dapp.git"
+  },
+  "author": "tak <re795h@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/tak1827/marriage-certification-dapp/issues"
+  },
+  "homepage": "https://github.com/tak1827/marriage-certification-dapp#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^2.4.0"
+  }
+}
