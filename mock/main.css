@@ -1,0 +1,79 @@
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+.pink.lighten-1 {
+  background-color: #ec407a;
+}
+
+.ribbon14-wrapper {
+  display: block;
+  position: relative;
+  margin: 15px auto;
+  padding: 10px 0;
+  box-sizing: border-box;
+  }
+
+.ribbon14 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  margin: 0;
+  padding: 10px 0;
+  z-index: 2;
+  width: 60px;
+  text-align: center;
+  font-size: 37px;
+  color: #fff;
+  background: #fff;
+}
+
+.ribbon14:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 0;
+  width: 0;
+  border-left: 30px solid #fff;
+  border-right: 30px solid #fff;
+  border-bottom: 20px solid transparent;
+}
+
+
+.btn-outline-pink {
+  color: #f9a825;
+  border-color: #f9a825;
+  background-color: #fff;
+}
+
+.btn-outline-pink:hover {
+  color: #fff;
+  background-color: #f9a825;
+  border-color: #f9a825;
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+  color: #f9a825;
+  background-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #f9a825;
+  border-color: #f9a825;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
