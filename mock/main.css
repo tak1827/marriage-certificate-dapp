@@ -21,7 +21,9 @@
   border-bottom: solid 3px black;
 }
 
-
+.bottom-space {
+  height: 130px;
+}
 /* Ref: https://saruwakakun.com/html-css/reference/h-design */
 .cross-line {
   position: relative;
