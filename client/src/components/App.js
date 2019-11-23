@@ -11,7 +11,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/certification/sample/:bride/:groom/" component={Certification}/>
-          <Route path="/certification/:id/:bride/:groom/" component={Certification}/>
+          <Route path="/certification/:id/:txHash" component={Certification}/>
           <Route path="/issue/:bride/:groom/" component={IssuePage}/>
           <Route path="/" component={Home}/>
         </Switch>

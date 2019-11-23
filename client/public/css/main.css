@@ -68,8 +68,8 @@
   width: 60px;
   text-align: center;
   font-size: 37px;
-  color: #fff;
-  background: #fff;
+  color: #f8f9fa;
+  background: #f8f9fa;
 }
 .ribbon14:after {
   content: '';
@@ -78,8 +78,8 @@
   top: 100%;
   height: 0;
   width: 0;
-  border-left: 30px solid #fff;
-  border-right: 30px solid #fff;
+  border-left: 30px solid #f8f9fa;
+  border-right: 30px solid #f8f9fa;
   border-bottom: 20px solid transparent;
 }
 

@@ -16,12 +16,9 @@ const sendTransaction = async (transaction, from, value=0, web3) => {
 
   console.log(receipt)
 
-  // if (!receipt.blockHash) {
-  //   showToast('Transaction Failed', 2000, 'fail')
-  //   return false
-  // }
+  if (!receipt.blockHash) throw 'Failed to send transaction'
 
-  return true;
+  return receipt;
 }
 
 export default sendTransaction

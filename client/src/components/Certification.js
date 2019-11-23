@@ -1,31 +1,58 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
+import contractDefinition from "../contracts/MarriageCertificationIssuer.json";
+import getWeb3 from "../utils/getWeb3";
+import getContractInstance from '../utils/getContractInstance'
 import { redirectRoot } from "../utils/common";
-import { fromHex } from "../utils/hex";
+import { toHex, fromHex } from "../utils/hex";
+
+const PREFIX_NUM = 20000000;
 
 class Certification extends Component {
   state = {
     bride: '',
     groom: '',
+    certificationID: '0x00000',
+    txHash: '0x0000000000000000000000000000000000000000',
+    issuedDate: (new Date()).toLocaleDateString('en-US'),
   }
 
-  componentDidMount() {
-    // let { bride, groom } = useParams()
-    // this.setState({bride: fromHex(bride)})
-    // this.setState({groom: fromHex(groom)})
+  componentDidMount = async () => {
+    const params = this.props.match.params
+
+    if (this.isSample()) {
+      this.setState({ bride: fromHex(params.bride), groom: fromHex(params.groom) })
+      return
+    }
+
+    try {
+      const web3 = await getWeb3()
+      const accounts = await web3.eth.getAccounts()
+      const contract = await getContractInstance(web3, contractDefinition)
+
+      const id = decodeCertificationID(params.id)
+      const certification = await contract.methods.certifications(id).call({ from: accounts[0] })
+      const receipt = await web3.eth.getTransactionReceipt(params.txHash)
+      const block = await web3.eth.getBlock(receipt.blockNumber)
+
+      this.setState({ 
+        bride: fromHex(certification.bride.replace(/^0x0*/,'')),
+        groom: fromHex(certification.groom.replace(/^0x0*/,'')),
+        certificationID: params.id,
+        txHash: params.txHash,
+        issuedDate: (new Date(block.timestamp * 1000)).toLocaleDateString('en-US'),
+      })
+
+    } catch (e) {
+      alert(e.message, console.error(e));
+    }
   }
 
-  validateCertificationID(value) {
-    console.log(value)
-    return value
-  }
+  isSample = () => this.props.match.path === '/certification/sample/:bride/:groom/'
 
   render() {
-    const params = this.props.match.params
-    const bride = fromHex(params.bride)
-    const groom = fromHex(params.groom)
-    const isSample = !this.validateCertificationID(params.groom.id)
-
+    const isSample = this.isSample()
     return (
       <div className="bg-white">
         <div className="container py-5">
@@ -39,20 +66,18 @@ class Certification extends Component {
             </div>
             <div className="row">
               <div className="col-md-5">
-                <p className="lead mx-4 border-line">{bride}</p>
+                <p className="lead mx-4 border-line">{this.state.bride}</p>
               </div>
               <div className="col-md-2">
                 <p>And</p>
               </div>
               <div className="col-md-5">
-                <p className="lead mx-4 border-line">{groom}</p>
+                <p className="lead mx-4 border-line">{this.state.groom}</p>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <p>Were United in Marriage on <code className="border-line text-dark">
-                { isSample ? (new Date()).toLocaleDateString('en-US') : '11/11/2019'}
-                </code><br/>This Certification was Recored in a Smart Contract of Ethereum.</p>
+                <p>Were United in Marriage on <code className="border-line text-dark">{this.state.issuedDate}</code><br/>This Certification was Recored in a Smart Contract of Ethereum.</p>
               </div>
             </div>
             <div className="row mb-5">
@@ -60,21 +85,11 @@ class Certification extends Component {
               <div className="col-md-8 text-left">
                 <blockquote className="blockquote ml-2">
                   <p className="mb-0">Transaction Hash:</p>
-                  <footer className="blockquote-footer break-word">
-                    { isSample 
-                      ? '0x0000000000000000000000000000000000000000' 
-                      : '0x52011FF7ec3c9DeA102A99aeF0eB035D6359BCf3' 
-                    }
-                  </footer>
+                  <footer className="blockquote-footer break-word">{this.state.txHash}</footer>
                 </blockquote>
                 <blockquote className="blockquote ml-2">
                   <p className="mb-0">Certification ID:</p>
-                  <footer className="blockquote-footer break-word">
-                    { isSample
-                      ? '0x00000'
-                      : '0x52011'
-                    }
-                  </footer>
+                  <footer className="blockquote-footer break-word">{this.state.certificationID}</footer>
                 </blockquote>
               </div>
               <div className="col-md-2">
@@ -106,7 +121,7 @@ class Certification extends Component {
               ? <div className="row mb-2">
                   <div className="col">
                     <Link className="btn btn-lg btn-block btn-outline-pink" 
-                      to={`/issue/${params.bride}/${params.groom}`}>Next</Link>
+                      to={`/issue/${toHex(this.state.bride)}/${toHex(this.state.groom)}`}>Next</Link>
                   </div>
                 </div>
               : ''
@@ -117,5 +132,7 @@ class Certification extends Component {
     )
   }
 }
+
+const decodeCertificationID = (hex) => Number(fromHex(hex.replace(/^0x/, ""))) - PREFIX_NUM - 1
 
 export default Certification;
