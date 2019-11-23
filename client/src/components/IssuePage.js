@@ -5,11 +5,9 @@ import contractDefinition from "../contracts/MarriageCertificationIssuer.json";
 import getWeb3 from "../utils/getWeb3";
 import getContractInstance from '../utils/getContractInstance'
 import sendTransaction from '../utils/sendTransaction'
-import { toHex } from "../utils/hex";
+import { toHex, fromHex } from "../utils/hex";
 
 class IssuePage extends Component {
-
-  componentDidMount = () => redirectRoot(!this.props.crtif.bride || !this.props.crtif.groom)
 
   handleClick = async () => {
     try {
@@ -34,12 +32,32 @@ class IssuePage extends Component {
   }
 
   render() {
+    const params = this.props.match.params
+    const bride = fromHex(params.bride)
+    const groom = fromHex(params.groom)
+
     return (
-      <div>
-        <h2>IssuePage</h2>
-        <p>{this.props.crtif.bride}</p>
-        <p>{this.props.crtif.groom}</p>
-        <button onClick={() => this.handleClick()}>Issue</button>
+      <div className="container">
+        <div className="py-4 text-center">
+          <h1 className="text-white">Issue Real Marriage certification</h1>
+        </div>
+        <form className="form-signin">
+          <div className="text-left mb-4">
+            <p className="lead text-white">Confirm your and your partner's name.</p>
+          </div>
+          <div className="form-label-group mb-2">
+            <input type="text" className="form-control" value={bride}/>
+          </div>
+          <div className="form-label-group mb-4">
+            <input type="text" className="form-control" value={groom}/>
+          </div>
+          <div className="text-left mb-4">
+            <p className="lead text-white">We issue marriage certification on Ethereum and take <u>0.02</u> ETH as issuance fee. Please make sure that <a className="text-white"href="https://metamask.io/"><strong>MetaMask</strong></a> have installed and enough ETH have been deposited.</p>
+            <p className="lead text-white">If you have prepared, we issue marriage certification for you. It may take few minutes. Be patient.</p>
+          </div>
+          <button className="btn btn-lg btn-block btn-outline-pink mb-4" 
+            onClick={() => this.handleClick()}>Issue Real Certification</button>
+        </form>
       </div>
     );
   }
