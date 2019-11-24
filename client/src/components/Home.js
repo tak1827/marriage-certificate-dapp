@@ -1,6 +1,9 @@
 import React, { Component } from "react"
+
 import { Link } from "react-router-dom"
 import { toHex } from "../utils/hex"
+
+import IconImg from "../images/icon.png"
 
 class Home extends Component {
   state = {
@@ -21,7 +24,7 @@ class Home extends Component {
       <div className="container ribbon14-wrapper">
         <span className="ribbon14">♡</span>
         <div className="py-5 text-center">
-          <img className="d-block mx-auto mb-4" src="/img/icon.png" alt="" width="72" height="72"/>
+          <img className="d-block mx-auto mb-4" src={IconImg} alt="" width="72" height="72"/>
           <h1 className="text-white">Marriage certification on Blockchain</h1>
           <p className="lead text-white">Blockchain prove your marriage forever even you go. Issue marriage certification for everybody even sexual minorities.</p>
         </div>

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { Component } from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import Home from './Home'
 import Certification from './Certification'
@@ -20,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

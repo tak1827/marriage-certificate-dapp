@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { redirectRoot } from "../utils/common";
+import React, { Component } from "react"
+import { redirectRoot } from "../utils/common"
 
-import contractDefinition from "../contracts/MarriageCertificationIssuer.json";
-import getWeb3 from "../utils/getWeb3";
+import contractDefinition from "../contracts/MarriageCertificationIssuer.json"
+import getWeb3 from "../utils/getWeb3"
 import getContractInstance from '../utils/getContractInstance'
 import sendTransaction from '../utils/sendTransaction'
-import { toHex, fromHex } from "../utils/hex";
+import { toHex, fromHex } from "../utils/hex"
 
 class IssuePage extends Component {
   state = {
@@ -13,7 +13,7 @@ class IssuePage extends Component {
     issued: false,
     bride: '',
     groom: '',
-    certificationID: '',
+    cerID: '',
     txHash: '',
   }
 
@@ -27,7 +27,7 @@ class IssuePage extends Component {
   handleClick = async () => {
     if (this.state.issued) {
       const s = this.state
-      window.location.href = `/certification/${s.certificationID}/${s.txHash}`
+      window.location.href = `/certification/${s.cerID}/${s.txHash}`
     }
 
     try {
@@ -46,13 +46,13 @@ class IssuePage extends Component {
       this.setState({ 
         issued: true, 
         issuing: false, 
-        certificationID: `0x${toHex(receipt.events.Issued.returnValues.certificationId)}`, 
+        cerID: `0x${toHex(receipt.events.Issued.returnValues.certificationId)}`, 
         txHash: receipt.transactionHash
       })
 
     } catch (e) {
       this.setState({issuing: false})
-      alert(e.message, console.error(e));
+      alert(e.message, console.error(e))
     }
   }
 
@@ -95,10 +95,10 @@ class IssuePage extends Component {
           
         </form>
       </div>
-    );
+    )
   }
 }
 
 const padTo32byte = (hex) => `0x${hex.padStart(64, '0')}`
 
-export default IssuePage;
+export default IssuePage
