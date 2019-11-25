@@ -1,5 +1,5 @@
-var MarriageCertificationIssuer = artifacts.require("./MarriageCertificationIssuer.sol");
+var MarriageCertificateIssuer = artifacts.require("./MarriageCertificateIssuer.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(MarriageCertificationIssuer);
+  deployer.deploy(MarriageCertificateIssuer);
 };

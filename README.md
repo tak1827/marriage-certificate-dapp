@@ -1,2 +1,2 @@
-# marriage-certification-dapp
-Issue  mariage certification as NFT on Ethereum
+# marriage-certificate-dapp
+Issue  mariage certificate as NFT on Ethereum

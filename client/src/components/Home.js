@@ -35,19 +35,19 @@ class Home extends Component {
 
           <div className="form-label-group mb-2">
             <input type="text" name="bride" placeholder="Your Name" required
-              onChange={(e) => this.handleChange(e)} 
+              onChange={(e) => this.handleChange(e)}
               className={this.validation(bride) || bride === '' ? "form-control" : "is-invalid form-control"}/>
             <div className="invalid-feedback text-white">Too Long</div>
           </div>
 
           <div className="form-label-group mb-4">
             <input type="text" name="groom" placeholder="Partner's Name" required
-              onChange={(e) => this.handleChange(e)} 
+              onChange={(e) => this.handleChange(e)}
               className={this.validation(groom) || groom === '' ? "form-control" : "is-invalid form-control"}/>
             <div className="invalid-feedback text-white">Too Long</div>
           </div>
-          <Link className={canIssue 
-              ? 'btn btn-lg btn-block btn-outline-pink' 
+          <Link className={canIssue
+              ? 'btn btn-lg btn-block btn-outline-pink'
               : 'btn btn-lg btn-block btn-outline-pink disabled'
             } to={`/certification/sample/${bride}/${groom}`}>Issue Sample Certification</Link>
         </form>

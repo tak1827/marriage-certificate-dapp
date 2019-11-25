@@ -4,12 +4,12 @@ import { Link } from "react-router-dom"
 import contractDefinition from "../contracts/MarriageCertificationIssuer.json"
 import getWeb3 from "../utils/getWeb3"
 import getContractInstance from '../utils/getContractInstance'
-import { redirectRoot } from "../utils/common"
+import { buildFBLink, buildTWLink, buildMLink } from "../utils/common"
 import { toHex, fromHex } from "../utils/hex"
 
 import LineTopImg from "../images/gorgeous-line-top.png"
 import LineBottomImg from "../images/gorgeous-line-bottom.png"
-import CerImg from "../images/certification-stamp.png"
+import CerImg from "../images/certificate-stamp.png"
 import FacebookImg from "../images/facebook-icon.svg"
 import TwitterImg from "../images/twitter-icon.svg"
 import MailImg from "../images/mail-icon.svg"
@@ -39,13 +39,13 @@ class Certification extends Component {
       const contract = await getContractInstance(web3, contractDefinition)
 
       const id = decodeCertificationID(params.id)
-      const certification = await contract.methods.certifications(id).call({ from: accounts[0] })
+      const certificate = await contract.methods.certificates(id).call({ from: accounts[0] })
       const receipt = await web3.eth.getTransactionReceipt(params.txHash)
       const block = await web3.eth.getBlock(receipt.blockNumber)
 
-      this.setState({ 
-        bride: fromHex(certification.bride.replace(/^0x0*/,'')),
-        groom: fromHex(certification.groom.replace(/^0x0*/,'')),
+      this.setState({
+        bride: fromHex(certificate.bride.replace(/^0x0*/,'')),
+        groom: fromHex(certificate.groom.replace(/^0x0*/,'')),
         cerID: params.id,
         txHash: params.txHash,
         issuedDate: (new Date(block.timestamp * 1000)).toLocaleDateString('en-US'),
@@ -56,7 +56,7 @@ class Certification extends Component {
     }
   }
 
-  isSample = () => this.props.match.path === '/certification/sample/:bride/:groom/'
+  isSample = () => this.props.match.path === '/certificate/sample/:bride/:groom/'
 
   render() {
     const isSample = this.isSample()
@@ -118,16 +118,16 @@ class Certification extends Component {
               <div className="col">
                 <p className="lead my-1">Share with your partner</p>
                 <nav className="mb-2">
-                  <img className="mr-2" src={FacebookImg} alt="" width="30" height="30"/>
-                  <img className="mr-2" src={TwitterImg} alt="" width="30" height="30"/>
-                  <img className="mr-2" src={MailImg} alt="" width="30" height="30"/>
+                  <a href={buildFBLink} target="_blank"><img className="mr-2" src={FacebookImg} alt="" width="30" height="30"/></a>
+                  <a href={buildTWLink} target="_blank"><img className="mr-2" src={TwitterImg} alt="" width="30" height="30"/></a>
+                  <a href={buildMLink} target="_blank"><img className="mr-2" src={MailImg} alt="" width="30" height="30"/></a>
                 </nav>
               </div>
             </div>
             { isSample
               ? <div className="row mb-2">
                   <div className="col">
-                    <Link className="btn btn-lg btn-block btn-outline-pink" 
+                    <Link className="btn btn-lg btn-block btn-outline-pink"
                       to={`/issue/${toHex(this.state.bride)}/${toHex(this.state.groom)}`}>Next</Link>
                   </div>
                 </div>

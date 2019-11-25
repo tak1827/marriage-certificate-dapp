@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { redirectRoot } from "../utils/common"
 
 import contractDefinition from "../contracts/MarriageCertificationIssuer.json"
 import getWeb3 from "../utils/getWeb3"
@@ -43,10 +42,10 @@ class IssuePage extends Component {
       const transaction = contract.methods.issueCertification(bride, groom)
       const receipt = await sendTransaction(transaction, accounts[0], fee)
 
-      this.setState({ 
-        issued: true, 
-        issuing: false, 
-        cerID: `0x${toHex(receipt.events.Issued.returnValues.certificationId)}`, 
+      this.setState({
+        issued: true,
+        issuing: false,
+        cerID: `0x${toHex(receipt.events.Issued.returnValues.certificationId)}`,
         txHash: receipt.transactionHash
       })
 
@@ -69,14 +68,14 @@ class IssuePage extends Component {
           <div className="form-label-group mb-2">
             { this.state.issued || this.state.issuing
               ? <input type="text" className="form-control" value={fromHex(this.state.bride)} readOnly/>
-              : <input type="text" name="bride" className="form-control" 
+              : <input type="text" name="bride" className="form-control"
                   value={fromHex(this.state.bride)} onChange={(e) => this.handleChange(e)} />
             }
           </div>
           <div className="form-label-group mb-4">
             { this.state.issued || this.state.issuing
               ? <input type="text" className="form-control" value={fromHex(this.state.groom)} readOnly/>
-              : <input type="text" name="groom" className="form-control" 
+              : <input type="text" name="groom" className="form-control"
                   value={fromHex(this.state.groom)} onChange={(e) => this.handleChange(e)} />
             }
           </div>
@@ -92,7 +91,7 @@ class IssuePage extends Component {
                 { this.state.issued  ? 'View Certification' : 'Issue Real Certification'}
               </button>
           }
-          
+
         </form>
       </div>
     )
