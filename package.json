@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Issue  mariage certificate as NFT on Ethereum",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "truffle compile",
+    "migrate:dev": "truffle migrate --reset --network develop",
+    "migrate:rinkeby": "truffle migrate --reset --network rinkeby",
+    "migrate:mainnet": "truffle migrate --reset --network mainnet"
   },
   "repository": {
     "type": "git",
@@ -15,6 +18,8 @@
   },
   "homepage": "https://github.com/tak1827/marriage-certificate-dapp#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^2.4.0"
+    "@openzeppelin/contracts": "^2.4.0",
+    "ethereumjs-wallet": "^0.6.3",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }
