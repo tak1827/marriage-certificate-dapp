@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import Home from './Home'
-import Certification from './Certification'
+import Certificate from './Certificate'
 import IssuePage from './IssuePage'
 
 class App extends Component {
@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/certification/sample/:bride/:groom/" component={Certification}/>
-          <Route path="/certification/:id/:txHash" component={Certification}/>
+          <Route path="/certificate/sample/:bride/:groom/" component={Certificate}/>
+          <Route path="/certificate/:id/:txHash" component={Certificate}/>
           <Route path="/issue/:bride/:groom/" component={IssuePage}/>
           <Route path="/" component={Home}/>
         </Switch>

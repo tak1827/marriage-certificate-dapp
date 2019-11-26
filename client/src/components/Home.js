@@ -25,12 +25,12 @@ class Home extends Component {
         <span className="ribbon14">♡</span>
         <div className="py-5 text-center">
           <img className="d-block mx-auto mb-4" src={IconImg} alt="" width="72" height="72"/>
-          <h1 className="text-white">Marriage certification on Blockchain</h1>
-          <p className="lead text-white">Blockchain prove your marriage forever even you go. Issue marriage certification for everybody even sexual minorities.</p>
+          <h1 className="text-white">Marriage certificate on Blockchain</h1>
+          <p className="lead text-white">Blockchain prove your marriage forever even you go. Issue marriage certificate for everybody even sexual minorities.</p>
         </div>
         <form className="form-signin">
           <div className="text-center mb-4">
-            <p className="lead text-white">Please tell us <code className="p-1 bg-light">your name</code> and <br/><code className="p-1 bg-light">your partner's name</code>. We are going to show you a sample certification.</p>
+            <p className="lead text-white">Please tell us <code className="p-1 bg-light">your name</code> and <br/><code className="p-1 bg-light">your partner's name</code>. We are going to show you a sample certificate.</p>
           </div>
 
           <div className="form-label-group mb-2">
@@ -49,7 +49,7 @@ class Home extends Component {
           <Link className={canIssue
               ? 'btn btn-lg btn-block btn-outline-pink'
               : 'btn btn-lg btn-block btn-outline-pink disabled'
-            } to={`/certification/sample/${bride}/${groom}`}>Issue Sample Certification</Link>
+            } to={`/certificate/sample/${bride}/${groom}`}>Issue Sample Certification</Link>
         </form>
       </div>
     )

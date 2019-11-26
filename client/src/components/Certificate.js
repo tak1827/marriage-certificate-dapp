@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
-import contractDefinition from "../contracts/MarriageCertificationIssuer.json"
+import contractDefinition from "../contracts/MarriageCertificateIssuer.json"
 import getWeb3 from "../utils/getWeb3"
 import getContractInstance from '../utils/getContractInstance'
 import { buildFBLink, buildTWLink, buildMLink } from "../utils/common"
@@ -16,7 +16,7 @@ import MailImg from "../images/mail-icon.svg"
 
 const PREFIX_NUM = 20000000
 
-class Certification extends Component {
+class Certificate extends Component {
   state = {
     bride: '',
     groom: '',
@@ -27,6 +27,7 @@ class Certification extends Component {
 
   componentDidMount = async () => {
     const params = this.props.match.params
+    console.log(params)
 
     if (this.isSample()) {
       this.setState({ bride: fromHex(params.bride), groom: fromHex(params.groom) })
@@ -38,7 +39,7 @@ class Certification extends Component {
       const accounts = await web3.eth.getAccounts()
       const contract = await getContractInstance(web3, contractDefinition)
 
-      const id = decodeCertificationID(params.id)
+      const id = decodeCertificateID(params.id)
       const certificate = await contract.methods.certificates(id).call({ from: accounts[0] })
       const receipt = await web3.eth.getTransactionReceipt(params.txHash)
       const block = await web3.eth.getBlock(receipt.blockNumber)
@@ -68,23 +69,24 @@ class Certification extends Component {
               <div className="col">
                 <img className="d-block mx-auto mb-4" src={LineTopImg} alt="" width="300" height="50"/>
                 { isSample ? <h3>Sample</h3> : ''}
-                <h1 className="text-pink">Certificate of Marriage</h1>
+                <h1 className="text-pink"><font face="cursive">Certificate of Marriage</font></h1>
+                <h3 className="text-pink">Recorded forever in Blockchain</h3>
               </div>
             </div>
             <div className="row">
               <div className="col-md-5">
-                <p className="lead mx-4 border-line">{this.state.bride}</p>
+                <p className="lead mx-4 border-line"><font face="cursive">{this.state.bride}</font></p>
               </div>
               <div className="col-md-2">
                 <p>And</p>
               </div>
               <div className="col-md-5">
-                <p className="lead mx-4 border-line">{this.state.groom}</p>
+                <p className="lead mx-4 border-line"><font face="cursive">{this.state.groom}</font></p>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <p>Were United in Marriage on <code className="border-line text-dark">{this.state.issuedDate}</code><br/>This Certification was Recored in a Smart Contract of Ethereum.</p>
+                <p>Were United in Marriage on <code className="border-line text-dark"><font face="cursive">{this.state.issuedDate}</font></code><br/>This Certificate was Recored in a Smart Contract of Ethereum.</p>
               </div>
             </div>
             <div className="row mb-5">
@@ -95,7 +97,7 @@ class Certification extends Component {
                   <footer className="blockquote-footer break-word">{this.state.txHash}</footer>
                 </blockquote>
                 <blockquote className="blockquote ml-2">
-                  <p className="mb-0">Certification ID:</p>
+                  <p className="mb-0">Certificate ID:</p>
                   <footer className="blockquote-footer break-word">{this.state.cerID}</footer>
                 </blockquote>
               </div>
@@ -106,7 +108,7 @@ class Certification extends Component {
             </div>
             <div className="row">
               <div className="col">
-                <img className="d-block mx-auto mb-4" src={LineBottomImg} alt="" width="270" height="30"/>
+                <img className="d-block mx-auto mb-4" src={LineBottomImg} alt="" width="270" height="40"/>
               </div>
             </div>
           </div>
@@ -118,9 +120,17 @@ class Certification extends Component {
               <div className="col">
                 <p className="lead my-1">Share with your partner</p>
                 <nav className="mb-2">
-                  <a href={buildFBLink} target="_blank"><img className="mr-2" src={FacebookImg} alt="" width="30" height="30"/></a>
-                  <a href={buildTWLink} target="_blank"><img className="mr-2" src={TwitterImg} alt="" width="30" height="30"/></a>
-                  <a href={buildMLink} target="_blank"><img className="mr-2" src={MailImg} alt="" width="30" height="30"/></a>
+                  <ul className="nav">
+                    <li className="nav-item">
+                      <a href={buildFBLink()} target="_blank" className="nav-link sns"><img src={FacebookImg} alt="" width="40" height="40"/></a>
+                    </li>
+                    <li className="nav-item">
+                      <a href={buildTWLink()} target="_blank" className="nav-link sns"><img src={TwitterImg} alt="" width="40" height="40"/></a>
+                    </li>
+                    <li className="nav-item">
+                      <a href={buildMLink()} target="_blank" className="nav-link sns"><img src={MailImg} alt="" width="40" height="40"/></a>
+                    </li>
+                  </ul>
                 </nav>
               </div>
             </div>
@@ -140,6 +150,6 @@ class Certification extends Component {
   }
 }
 
-const decodeCertificationID = (hex) => Number(fromHex(hex.replace(/^0x/, ""))) - PREFIX_NUM - 1
+const decodeCertificateID = (hex) => Number(fromHex(hex.replace(/^0x/, ""))) - PREFIX_NUM - 1
 
-export default Certification
+export default Certificate

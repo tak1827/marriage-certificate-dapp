@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import contractDefinition from "../contracts/MarriageCertificationIssuer.json"
+import contractDefinition from "../contracts/MarriageCertificateIssuer.json"
 import getWeb3 from "../utils/getWeb3"
 import getContractInstance from '../utils/getContractInstance'
 import sendTransaction from '../utils/sendTransaction'
@@ -26,7 +26,7 @@ class IssuePage extends Component {
   handleClick = async () => {
     if (this.state.issued) {
       const s = this.state
-      window.location.href = `/certification/${s.cerID}/${s.txHash}`
+      window.location.href = `/certificate/${s.cerID}/${s.txHash}`
     }
 
     try {
@@ -39,14 +39,16 @@ class IssuePage extends Component {
       const groom = padTo32byte(this.state.groom)
       const fee = await contract.methods.FEE().call({ from: accounts[0] })
 
-      const transaction = contract.methods.issueCertification(bride, groom)
+      const transaction = contract.methods.issueCertificate(bride, groom)
       const receipt = await sendTransaction(transaction, accounts[0], fee)
 
       this.setState({
         issued: true,
         issuing: false,
-        cerID: `0x${toHex(receipt.events.Issued.returnValues.certificationId)}`,
+        cerID: `0x${toHex(receipt.events.Issued.returnValues.certificateID)}`,
         txHash: receipt.transactionHash
+      },() => {
+        window.location.href = `/certificate/${this.state.cerID}/${this.state.txHash}`
       })
 
     } catch (e) {
@@ -59,7 +61,7 @@ class IssuePage extends Component {
     return (
       <div className="container">
         <div className="py-4 text-center">
-          <h1 className="text-white">Issue Real Marriage certification</h1>
+          <h1 className="text-white">Issue Real Marriage Certificate</h1>
         </div>
         <form className="form-signin">
           <div className="text-left mb-4">
@@ -80,15 +82,15 @@ class IssuePage extends Component {
             }
           </div>
           <div className="text-left mb-4">
-            <p className="lead text-white">We issue marriage certification on Ethereum and take <u>0.02</u> ETH as issuance fee. Please make sure that <a className="text-white"href="https://metamask.io/"><strong>MetaMask</strong></a> have installed and enough ETH have been deposited.</p>
-            <p className="lead text-white">If you have prepared, we issue marriage certification for you. It may take few minutes. Be patient.</p>
+            <p className="lead text-white">We issue marriage certificate on Ethereum and take <u>0.02</u> ETH as issuance fee. Please make sure that <a className="text-white"href="https://metamask.io/"><strong>MetaMask</strong></a> have installed and enough ETH have been deposited.</p>
+            <p className="lead text-white">If you have prepared, we issue marriage certificate for you. It may take few minutes. Be patient.</p>
           </div>
           { this.state.issuing
             ? <button className = "btn btn-lg btn-block btn-outline-pink mb-4" disabled>
                 <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Issuing...
               </button>
             : <button className = "btn btn-lg btn-block btn-outline-pink mb-4" onClick = {(e) => this.handleClick(e)}>
-                { this.state.issued  ? 'View Certification' : 'Issue Real Certification'}
+                { this.state.issued  ? 'View Certificate' : 'Issue Real Certificate'}
               </button>
           }
 
