@@ -1,0 +1,114 @@
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+.break-word {
+  word-wrap: break-word;
+}
+
+.pink.lighten-1 {
+  background-color: #ec407a;
+}
+
+.text-pink {
+  color: #ec407a;
+}
+
+.border-line {
+  border-bottom: solid 3px black;
+}
+
+.bottom-space {
+  height: 130px;
+}
+/* Ref: https://saruwakakun.com/html-css/reference/h-design */
+.cross-line {
+  position: relative;
+  padding: 0.25em 1em;
+  border-top: solid 2px #f48fb1;
+  border-bottom: solid 2px #f48fb1;
+}
+.cross-line:before, .cross-line:after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: -webkit-calc(100% + 14px);
+  height: calc(100% + 14px);
+  background-color: #f48fb1;
+}
+.cross-line:before {
+  left: 7px;
+}
+.cross-line:after {
+  right: 7px;
+}
+
+
+/* Ref: https://saruwakakun.com/html-css/reference/ribbon */
+.ribbon14-wrapper {
+  display: block;
+  position: relative;
+  margin: 15px auto;
+  padding: 10px 0;
+  box-sizing: border-box;
+  margin-top: -10px;
+}
+.ribbon14 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  margin: 0;
+  padding: 10px 0;
+  z-index: 2;
+  width: 60px;
+  text-align: center;
+  font-size: 37px;
+  color: #fff;
+  background: #fff;
+}
+.ribbon14:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 0;
+  width: 0;
+  border-left: 30px solid #fff;
+  border-right: 30px solid #fff;
+  border-bottom: 20px solid transparent;
+}
+
+
+/* Ref: https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css */
+.btn-outline-pink {
+  color: #f9a825;
+  border-color: #f9a825;
+  background-color: #fff;
+}
+.btn-outline-pink:hover {
+  color: #fff;
+  background-color: #f9a825;
+  border-color: #f9a825;
+}
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+  color: #f9a825;
+  background-color: transparent;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #f9a825;
+  border-color: #f9a825;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
