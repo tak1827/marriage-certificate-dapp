@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2f42908fa6caeb84d90e7f541a6ecc67",
+    "revision": "d3c762dd391a8ab9b82017ba805e6837",
     "url": "/marriage-certificate-dapp/index.html"
   },
   {
-    "revision": "6d243cbb28d4b13c7a64",
-    "url": "/marriage-certificate-dapp/static/js/2.866959a4.chunk.js"
+    "revision": "ffe498f259d3492f7c69",
+    "url": "/marriage-certificate-dapp/static/js/2.3224e4a6.chunk.js"
   },
   {
-    "revision": "eb06e39d79376abedc5c",
-    "url": "/marriage-certificate-dapp/static/js/main.ef3d78e7.chunk.js"
+    "revision": "ed9365c5bd81f8ba1d71",
+    "url": "/marriage-certificate-dapp/static/js/main.b6918f3d.chunk.js"
   },
   {
     "revision": "13c993cb93d50930a79c",
