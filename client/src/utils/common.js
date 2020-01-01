@@ -30,4 +30,6 @@ const redirectRoot = (condition) => {
   if (condition) window.location.href = "/"
 }
 
-export { redirectRoot, buildFBLink, buildTWLink, buildMLink }
+const langIsJa = () => window.navigator.language === "ja"
+
+export { redirectRoot, buildFBLink, buildTWLink, buildMLink, langIsJa }

@@ -1,7 +1,9 @@
 import React, { Component } from "react"
+import { Determinator, MultiLang } from "react-multi-language";
 
 import { Link } from "react-router-dom"
 import { toHex } from "../utils/hex"
+import { langIsJa } from "../utils/common"
 
 import IconImg from "../images/icon.png"
 
@@ -9,7 +11,10 @@ class Home extends Component {
   state = {
     bride: '',
     groom: '',
+    lang: 'en',
   }
+
+  componentDidMount = () => this.setState({lang: langIsJa() ? 'ja' : this.state.lang}, function() {console.log(this.state)})
 
   handleChange = (e) => this.setState({[e.target.name]: toHex(e.target.value)})
 
@@ -28,6 +33,12 @@ class Home extends Component {
           <h1 className="text-white">Marriage certificate on Blockchain</h1>
           <p className="lead text-white">Blockchain prove your marriage forever even you go. Issue marriage certificate for everybody even sexual minorities.</p>
         </div>
+        <Determinator>
+          {{
+            en: "Hello World",
+            ja: "こんにちは"
+          }}
+        </Determinator>
         <form className="form-signin">
           <div className="text-center mb-4">
             <p className="lead text-white">Please tell us <code className="p-1 bg-light">your name</code> and <br/><code className="p-1 bg-light">your partner's name</code>. We are going to show you a sample certificate.</p>
@@ -51,6 +62,7 @@ class Home extends Component {
               : 'btn btn-lg btn-block btn-outline-pink disabled'
             } to={`/certificate/sample/${bride}/${groom}`}>Issue Sample Certification</Link>
         </form>
+        <MultiLang lang={this.state.lang}/>
       </div>
     )
   }

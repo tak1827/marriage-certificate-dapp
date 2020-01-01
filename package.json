@@ -1,6 +1,6 @@
 {
   "name": "marriage-certificate-dapp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Issue  mariage certificate as NFT on Ethereum",
   "scripts": {
     "compile": "truffle compile",
