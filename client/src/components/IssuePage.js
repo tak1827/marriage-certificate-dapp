@@ -37,7 +37,7 @@ class IssuePage extends Component {
 
     try {
       this.setState({issuing: true})
-      const web3 = await getWeb3()
+      const web3 = await getWeb3(true)
       const accounts = await web3.eth.getAccounts()
       const contract = await getContractInstance(web3, contractDefinition)
 
