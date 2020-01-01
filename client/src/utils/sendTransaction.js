@@ -16,7 +16,7 @@ const sendTransaction = async (transaction, from, value=0, web3) => {
 
   console.log(receipt)
 
-  if (!receipt.blockHash) throw 'Failed to send transaction'
+  if (!receipt.blockHash) throw new Error('Failed to send transaction')
 
   return receipt;
 }

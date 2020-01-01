@@ -29,11 +29,13 @@ class Certificate extends Component {
     const params = this.props.match.params
     console.log(params)
 
+    // Sample Page
     if (this.isSample()) {
       this.setState({ bride: fromHex(params.bride), groom: fromHex(params.groom) })
       return
     }
 
+    // Real Page
     try {
       const web3 = await getWeb3()
       const accounts = await web3.eth.getAccounts()
@@ -102,7 +104,7 @@ class Certificate extends Component {
                 </blockquote>
               </div>
               <div className="col-md-2">
-                <img src={CerImg} alt="Responsive image" width="130" height="150"/>
+                <img src={CerImg} alt="certificates stamp" width="130" height="150"/>
               </div>
               <div className="col-md-1"></div>
             </div>
@@ -122,13 +124,13 @@ class Certificate extends Component {
                 <nav className="mb-2">
                   <ul className="nav">
                     <li className="nav-item">
-                      <a href={buildFBLink()} target="_blank" className="nav-link sns"><img src={FacebookImg} alt="" width="40" height="40"/></a>
+                      <a href={buildFBLink()} target="_blank" rel="noopener noreferrer" className="nav-link sns"><img src={FacebookImg} alt="" width="40" height="40"/></a>
                     </li>
                     <li className="nav-item">
-                      <a href={buildTWLink()} target="_blank" className="nav-link sns"><img src={TwitterImg} alt="" width="40" height="40"/></a>
+                      <a href={buildTWLink()} target="_blank" rel="noopener noreferrer" className="nav-link sns"><img src={TwitterImg} alt="" width="40" height="40"/></a>
                     </li>
                     <li className="nav-item">
-                      <a href={buildMLink()} target="_blank" className="nav-link sns"><img src={MailImg} alt="" width="40" height="40"/></a>
+                      <a href={buildMLink()} target="_blank" rel="noopener noreferrer" className="nav-link sns"><img src={MailImg} alt="" width="40" height="40"/></a>
                     </li>
                   </ul>
                 </nav>
