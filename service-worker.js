@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/marriage-certificate-dapp/precache-manifest.ef00a133a282d79f1003b923e387a6cd.js"
+  "/marriage-certificate-dapp/precache-manifest.ea32b1c82239664758d65d354e6dbdb8.js"
 );
 
 self.addEventListener('message', (event) => {
