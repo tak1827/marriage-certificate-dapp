@@ -5,7 +5,7 @@ import '@openzeppelin/contracts/math/SafeMath.sol';
 
 /**
  * @title MarriageCertificateIssuer
- * @dev Issue marriage certificate. 
+ * @dev Issue marriage certificate.
  * Don't issue as ERC720 for saving gas cost purpose. We don't assume to trasfer token
  */
 contract MarriageCertificateIssuer is Ownable {
