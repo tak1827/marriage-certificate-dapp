@@ -2,7 +2,7 @@
 Issue  mariage certificate as NFT on Ethereum
 
 # Contract
-Mainnet: https://etherscan.io/address/0x5cd20dad95864ffb78eb90697342f4c261a7aae2
+Mainnet: https://etherscan.io/address/0x5cd20dad95864ffb78eb90697342f4c261a7aae2<br>
 Rinkeby: https://rinkeby.etherscan.io/address/0x1C590aaE8F510663641D79cae4070a351094C38a
 
 # HomePage
