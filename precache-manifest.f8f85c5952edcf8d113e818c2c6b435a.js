@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ccc2045d8e921515fe2b4b1b91d93a33",
+    "revision": "36560cf1f0b04996f73cc40f61af2dff",
     "url": "/marriage-certification-dapp/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/marriage-certification-dapp/static/js/2.a34df65b.chunk.js"
   },
   {
-    "revision": "50fe66b823b639e0051a",
-    "url": "/marriage-certification-dapp/static/js/main.745e3a0c.chunk.js"
+    "revision": "9ee309736ac0922f8a68",
+    "url": "/marriage-certification-dapp/static/js/main.182ce0d4.chunk.js"
   },
   {
     "revision": "d15aa5d55587d8b50752",
