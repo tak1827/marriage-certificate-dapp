@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import { Determinator, MultiLang } from "react-multi-language"
 
 import contractDefinition from "../contracts/MarriageCertificateIssuer.json"
 import getWeb3 from "../utils/getWeb3"
 import getContractInstance from '../utils/getContractInstance'
-import { buildFBLink, buildTWLink, buildMLink } from "../utils/common"
+import { buildFBLink, buildTWLink, buildMLink, langIsJa } from "../utils/common"
 import { toHex, fromHex } from "../utils/hex"
 
 import LineTopImg from "../images/gorgeous-line-top.png"
@@ -23,11 +24,13 @@ class Certificate extends Component {
     cerID: '0x00000',
     txHash: '0x0000000000000000000000000000000000000000',
     issuedDate: (new Date()).toLocaleDateString('en-US'),
+    lang: 'en',
   }
 
   componentDidMount = async () => {
+    this.setState({lang: langIsJa() ? 'ja' : this.state.lang})
+
     const params = this.props.match.params
-    console.log(params)
 
     // Sample Page
     if (this.isSample()) {
@@ -128,7 +131,14 @@ class Certificate extends Component {
           <div className="container">
             <div className="row text-white">
               <div className="col">
-                <p className="lead my-1">Share with your partner</p>
+                <p className="lead my-1">
+                  <Determinator>
+                  {{
+                    en: 'Share with your partner',
+                    ja: 'パートナーにシェアしましょう。'
+                  }}
+                  </Determinator>
+                </p>
                 <nav className="mb-2">
                   <ul className="nav">
                     <li className="nav-item">
@@ -148,13 +158,21 @@ class Certificate extends Component {
               ? <div className="row mb-2">
                   <div className="col">
                     <Link className="btn btn-lg btn-block btn-outline-pink"
-                      to={`/issue/${toHex(this.state.bride)}/${toHex(this.state.groom)}`}>Next</Link>
+                      to={`/issue/${toHex(this.state.bride)}/${toHex(this.state.groom)}`}>
+                      <Determinator>
+                      {{
+                        en: 'Next',
+                        ja: '次へ'
+                      }}
+                      </Determinator>
+                    </Link>
                   </div>
                 </div>
               : ''
              }
           </div>
         </div>
+        <MultiLang lang={this.state.lang}/>
       </div>
     )
   }
