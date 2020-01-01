@@ -1,11 +1,13 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import { Determinator, MultiLang } from "react-multi-language"
 
 import contractDefinition from "../contracts/MarriageCertificateIssuer.json"
 import getWeb3 from "../utils/getWeb3"
 import getContractInstance from '../utils/getContractInstance'
 import sendTransaction from '../utils/sendTransaction'
 import { toHex, fromHex } from "../utils/hex"
+import { langIsJa } from "../utils/common"
 
 class IssuePage extends Component {
   state = {
@@ -15,9 +17,12 @@ class IssuePage extends Component {
     groom: '',
     cerID: '',
     txHash: '',
+    lang: 'en',
   }
 
   componentDidMount() {
+    this.setState({lang: langIsJa() ? 'ja' : this.state.lang})
+
     const params = this.props.match.params
     this.setState({bride: params.bride, groom: params.groom})
   }
@@ -32,7 +37,7 @@ class IssuePage extends Component {
 
     try {
       this.setState({issuing: true})
-      const web3 = await getWeb3()
+      const web3 = await getWeb3(true)
       const accounts = await web3.eth.getAccounts()
       const contract = await getContractInstance(web3, contractDefinition)
 
@@ -62,11 +67,25 @@ class IssuePage extends Component {
     return (
       <div className="container">
         <div className="py-4 text-center">
-          <h1 className="text-white">Issue Real Marriage Certificate</h1>
+          <h1 className="text-white">
+            <Determinator>
+            {{
+              en: 'Issue Real Marriage Certificate',
+              ja: '本物の証明書を発行します'
+            }}
+            </Determinator>
+          </h1>
         </div>
         <form className="form-signin">
           <div className="text-left mb-4">
-            <p className="lead text-white">Confirm your and your partner's name.</p>
+            <p className="lead text-white">
+              <Determinator>
+              {{
+                en: "Confirm your and your partner's name.",
+                ja: 'あなたとパートーナーのお名前を確認してください。'
+              }}
+              </Determinator>
+            </p>
           </div>
           <div className="form-label-group mb-2">
             { this.state.issued || this.state.issuing
@@ -83,19 +102,58 @@ class IssuePage extends Component {
             }
           </div>
           <div className="text-left mb-4">
-            <p className="lead text-white">We issue marriage certificate on Ethereum and take <u>0.02</u> ETH as issuance fee. Please make sure that <a className="text-white"href="https://metamask.io/"><strong>MetaMask</strong></a> have installed and enough ETH have been deposited.</p>
-            <p className="lead text-white">If you have prepared, we issue marriage certificate for you. It may take few minutes. Be patient.</p>
+            <p className="lead text-white">
+              <Determinator>
+                {{
+                  en: 'Issue marriage certificate on Ethereum.',
+                  ja: '婚約証明書をイーサリアム上に発行します。'
+                }}
+              </Determinator>
+              <br/>
+              <u>0.02 ETH</u>
+              <Determinator>
+                {{
+                  en: ' is issuance fee. And, ',
+                  ja: 'が発行手数料です。そして、'
+                }}
+              </Determinator>
+              <a className="text-white"href="https://metamask.io/"><strong>MetaMask</strong></a>
+              <Determinator>
+                {{
+                  en: ' is required. Please install in advance. Then please make sure that enough ETH have been deposited.',
+                  ja: 'が必要です。事前にインストールしてください。また、十分な量のETHを入金してください。'
+                }}
+              </Determinator>
+            </p>
+            <p className="lead text-white">
+              <Determinator>
+                {{
+                  en: 'If you have prepared, please click the following button. It may take few minutes for issuing. Sorry for keeping you wait.',
+                  ja: '準備ができたら下のボタンを押してください。場合によっては、発行に数分かかります。ご不便をおかけして申し訳ございません。'
+                }}
+              </Determinator>
+            </p>
           </div>
           { this.state.issuing
             ? <button className = "btn btn-lg btn-block btn-outline-pink mb-4" disabled>
-                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Issuing...
+                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <Determinator>
+                  {{
+                    en: 'Issuing...',
+                    ja: '発行中...'
+                  }}
+                </Determinator>
               </button>
             : <button className = "btn btn-lg btn-block btn-outline-pink mb-4" onClick = {(e) => this.handleClick(e)}>
-                { this.state.issued  ? 'View Certificate' : 'Issue Real Certificate'}
+                { this.state.issued
+                  ? this.state.lang === 'ja' ? '証明書を見る' : 'View Certificate'
+                  : this.state.lang === 'ja' ? '本物の証明書を発行' : 'Issue Real Certificate'}
               </button>
           }
-          <Link Id="show-certificate" className="d-none" to={`/certificate/${this.state.cerID}/${this.state.txHash}`}>Show Certificate</Link>
+          <Link Id="show-certificate" className="d-none" to={`/certificate/${this.state.cerID}/${this.state.txHash}`}>Show Certificate
+          </Link>
         </form>
+        <MultiLang lang={this.state.lang}/>
       </div>
     )
   }
