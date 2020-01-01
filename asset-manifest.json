@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/marriage-certificate-dapp/static/js/main.bfa06eef.chunk.js",
-    "main.js.map": "/marriage-certificate-dapp/static/js/main.bfa06eef.chunk.js.map",
+    "main.js": "/marriage-certificate-dapp/static/js/main.ef3d78e7.chunk.js",
+    "main.js.map": "/marriage-certificate-dapp/static/js/main.ef3d78e7.chunk.js.map",
     "runtime-main.js": "/marriage-certificate-dapp/static/js/runtime-main.06defc33.js",
     "runtime-main.js.map": "/marriage-certificate-dapp/static/js/runtime-main.06defc33.js.map",
     "static/js/2.866959a4.chunk.js": "/marriage-certificate-dapp/static/js/2.866959a4.chunk.js",
     "static/js/2.866959a4.chunk.js.map": "/marriage-certificate-dapp/static/js/2.866959a4.chunk.js.map",
     "index.html": "/marriage-certificate-dapp/index.html",
-    "precache-manifest.ea32b1c82239664758d65d354e6dbdb8.js": "/marriage-certificate-dapp/precache-manifest.ea32b1c82239664758d65d354e6dbdb8.js",
+    "precache-manifest.28d68e8e8e5b578ea4f1e9ab5444b18d.js": "/marriage-certificate-dapp/precache-manifest.28d68e8e8e5b578ea4f1e9ab5444b18d.js",
     "service-worker.js": "/marriage-certificate-dapp/service-worker.js",
     "static/media/certificate-stamp.png": "/marriage-certificate-dapp/static/media/certificate-stamp.dd99316c.png",
     "static/media/facebook-icon.svg": "/marriage-certificate-dapp/static/media/facebook-icon.1102b5b1.svg",
@@ -20,6 +20,6 @@
   "entrypoints": [
     "static/js/runtime-main.06defc33.js",
     "static/js/2.866959a4.chunk.js",
-    "static/js/main.bfa06eef.chunk.js"
+    "static/js/main.ef3d78e7.chunk.js"
   ]
 }
