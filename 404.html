@@ -23,11 +23,11 @@
       // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
       // https://username.github.io/repo-name/?p=/one/two&q=a=b~and~c=d#qwe
       // Otherwise, leave segmentCount as 0.
+      console.log('redirect')
       var l = window.location;
-      // l.replace(
-      //   l.origin + '/' + l.pathname.split('/')[1] + '/?p=/' + l.pathname.replace('/' + l.pathname.split('/')[1] + '/','')
-      // );
-
+      l.replace(
+        l.origin + '/' + l.pathname.split('/')[1] + '/?p=/' + l.pathname.replace('/' + l.pathname.split('/')[1] + '/','')
+      );
     </script>
   </head>
   <body>
