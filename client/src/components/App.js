@@ -8,7 +8,7 @@ import IssuePage from './IssuePage'
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/certificate/sample/:bride/:groom/" component={Certificate}/>
           <Route path="/certificate/:id/:txHash" component={Certificate}/>

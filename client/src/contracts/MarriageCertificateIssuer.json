@@ -3248,6 +3248,54 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {
+    "1": {
+      "events": {
+        "0x4fd8f6be195ba2870d47af2c8b625bf5d64911bc399223db6a330f1ab4cd3ddd": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "certificateID",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "bride",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "groom",
+              "type": "bytes32"
+            }
+          ],
+          "name": "Issued",
+          "type": "event",
+          "signature": "0x4fd8f6be195ba2870d47af2c8b625bf5d64911bc399223db6a330f1ab4cd3ddd"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
+      "links": {},
+      "address": "0x5Cd20dad95864Ffb78eb90697342f4C261A7Aae2",
+      "transactionHash": "0x22a79e073f4ccb5718e0b32a02eda75c59beac267c10435cc250735feed39dea"
+    },
     "4": {
       "events": {
         "0x4fd8f6be195ba2870d47af2c8b625bf5d64911bc399223db6a330f1ab4cd3ddd": {
@@ -3346,7 +3394,7 @@
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2020-01-01T03:08:14.849Z",
+  "updatedAt": "2020-01-01T08:40:19.609Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Issue marriage certificate. Don't issue as ERC720 for saving gas cost purpose. We don't assume to trasfer token",

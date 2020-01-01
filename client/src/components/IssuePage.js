@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 
 import contractDefinition from "../contracts/MarriageCertificateIssuer.json"
 import getWeb3 from "../utils/getWeb3"
@@ -48,7 +49,7 @@ class IssuePage extends Component {
         cerID: `0x${toHex(receipt.events.Issued.returnValues.certificateID)}`,
         txHash: receipt.transactionHash
       },() => {
-        window.location.href = `/certificate/${this.state.cerID}/${this.state.txHash}`
+        document.getElementById('show-certificate').click()
       })
 
     } catch (e) {
@@ -93,7 +94,7 @@ class IssuePage extends Component {
                 { this.state.issued  ? 'View Certificate' : 'Issue Real Certificate'}
               </button>
           }
-
+          <Link Id="show-certificate" className="d-none" to={`/certificate/${this.state.cerID}/${this.state.txHash}`}>Show Certificate</Link>
         </form>
       </div>
     )
