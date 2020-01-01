@@ -96,7 +96,15 @@ class Certificate extends Component {
               <div className="col-md-8 text-left">
                 <blockquote className="blockquote ml-2">
                   <p className="mb-0">Transaction Hash:</p>
-                  <footer className="blockquote-footer break-word">{this.state.txHash}</footer>
+                  <footer className="blockquote-footer break-word">
+                  {
+                    isSample
+                      ? <div>{this.state.txHash}</div>
+                      : <a href={`https://etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">
+                          {this.state.txHash}
+                        </a>
+                  }
+                  </footer>
                 </blockquote>
                 <blockquote className="blockquote ml-2">
                   <p className="mb-0">Certificate ID:</p>
