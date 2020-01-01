@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dcdb13a0786393fa0622040fb59ed9ab",
+    "revision": "c4ef44a017b9d00127eb33598faa1a0b",
     "url": "/marriage-certificate-dapp/index.html"
   },
   {
