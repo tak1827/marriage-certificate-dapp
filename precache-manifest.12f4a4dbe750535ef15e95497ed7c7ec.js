@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a6254ed5cfeb3b522d0b0031794dac90",
+    "revision": "ccc2045d8e921515fe2b4b1b91d93a33",
     "url": "/marriage-certification-dapp/index.html"
   },
   {
-    "revision": "eb1d625f26f8d728da65",
-    "url": "/marriage-certification-dapp/static/js/2.192b5f5f.chunk.js"
+    "revision": "bce8c62a2b48263e6278",
+    "url": "/marriage-certification-dapp/static/js/2.a34df65b.chunk.js"
   },
   {
-    "revision": "8544a9acfe42065a4c3c",
-    "url": "/marriage-certification-dapp/static/js/main.f1757155.chunk.js"
+    "revision": "50fe66b823b639e0051a",
+    "url": "/marriage-certification-dapp/static/js/main.745e3a0c.chunk.js"
   },
   {
     "revision": "d15aa5d55587d8b50752",
@@ -17,7 +17,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "dd99316cfe38f580ac96b8413b81896f",
-    "url": "/marriage-certification-dapp/static/media/certification-stamp.dd99316c.png"
+    "url": "/marriage-certification-dapp/static/media/certificate-stamp.dd99316c.png"
   },
   {
     "revision": "1102b5b17628b72f8641f5239ab8a8d1",
