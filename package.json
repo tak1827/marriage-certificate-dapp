@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/tak1827/marriage-certificate-dapp#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^2.4.0",
+    "@openzeppelin/contracts": "^4.7.2",
     "ethereumjs-wallet": "^0.6.3",
     "truffle-hdwallet-provider": "^1.0.17"
   }
